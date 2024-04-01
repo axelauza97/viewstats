@@ -1,41 +1,93 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Todo } from "../components/Todo";
 import { TodoAddForm } from "../components/TodoAddForm";
+import { EditPopUp } from "../components/EditPopUp";
+import {
+  deleteTodo,
+  editTodo,
+  fetchTodos,
+  saveTodo,
+} from "../services/todoService";
 
 export default function Dashboard() {
-  const [todo, setTodo] = useState([]);
+  const [todos, setTodos] = useState([]);
+  const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    (async () => {
+      const userId = localStorage.getItem("user_id");
+      const res = await fetchTodos({ userId: userId });
+      setTodos(res.data);
+    })();
+  }, []);
+
   const addItemHandler = (event) => {
     event.preventDefault();
     const fields = Object.fromEntries(new FormData(event.target));
     if (fields.todo.trim() === "") {
       return;
     }
-    setTodo((prev) => [
-      ...prev,
-      { text: fields.todo, id: crypto.randomUUID() },
-    ]);
+    const id = crypto.randomUUID();
+    (async () => {
+      const userId = localStorage.getItem("user_id");
+      const formData = new FormData();
+      formData.append("uid", id);
+      formData.append("text", fields.todo);
+      formData.append("user", userId);
+      await saveTodo(formData);
+      const res = await fetchTodos({ userId: userId });
+      setTodos(res.data);
+    })();
+    setTodos((prev) => [...prev, { text: fields.todo, id: id }]);
     event.target.todo.value = "";
     event.target.todo.focus;
   };
   const deleteTodoHandler = (id) => {
-    setTodo((prev) => prev.filter((e) => e.id != id));
+    (async () => {
+      await deleteTodo({ uid: id });
+    })();
+    setTodos((prev) => prev.filter((e) => e.id != id));
   };
   const editTodoHandler = (id) => {
-    setTodo((prev) => prev.filter((e) => e.id != id));
+    setIsEditing({
+      show: true,
+      ...todos.filter((e) => e.id == id)[0],
+    });
+  };
+  const saveEditTodoHandler = (event) => {
+    event.preventDefault();
+    const fields = Object.fromEntries(new FormData(event.target));
+    const id = fields.id;
+    todos.filter((e) => e.id == fields.id)[0].text = fields.todo;
+    (async () => {
+      const userId = localStorage.getItem("user_id");
+      const formData = new FormData();
+      formData.append("uid", id);
+      formData.append("text", fields.todo);
+      formData.append("user", userId);
+      await editTodo({ formData, id });
+    })();
+    setIsEditing({ show: false });
   };
   return (
     <>
-      <section className="mx-auto h-full max-w-full sm:max-w-xl  place-content-center p-8  gap-4">
-        <h3 className="font-bold">Add todo Form</h3>
+      {isEditing.show ? (
+        <EditPopUp todo={isEditing} save={saveEditTodoHandler} />
+      ) : (
+        ""
+      )}
+
+      <section className="mx-auto h-full max-w-full place-content-center  gap-4 p-8  sm:max-w-xl">
+        <h3 className="text-lg font-bold drop-shadow">Add todo Form</h3>
         <TodoAddForm addItemHandler={addItemHandler} />
       </section>
       <section
-        className={`no-scrollbar ${todo.length > 0 ? "overflow-y-scroll" : ""}`}
+        
       >
-        <ul>
-          {todo &&
-            todo.map((e) => (
+        <ul className={`p-8 my-2 max-h-full overflow-hidden no-scrollbar  ${todos.length > 0 ? "overflow-y-scroll" : ""}`} >
+          {todos &&
+            todos.map((e) => (
               <Todo
                 key={e.id}
                 element={e}
@@ -43,8 +95,8 @@ export default function Dashboard() {
                 editHandler={editTodoHandler}
               />
             ))}
-          {todo.length == 0 && (
-            <li className="w-40 px-2 py-2 m-2 border border-gray-700 border-solid rounded hover:border-gray-800 hover:cursor-pointer">
+          {todos.length == 0 && (
+            <li className="p-8 m-2 w-40 rounded border border-solid border-gray-700 px-2 py-2 hover:cursor-pointer hover:border-gray-800">
               No elements
             </li>
           )}

@@ -38,3 +38,8 @@ class SocialSerializer(UserSerializer):
             "token" : self.token,
             **attrs,
         }
+
+class TodoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Todo
+        fields = "__all__"

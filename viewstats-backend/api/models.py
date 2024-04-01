@@ -35,3 +35,9 @@ class User(AbstractUser):
 
     def __str__(self):
         return "%s: %s" % (self.id, self.email)
+
+
+class Todo(models.Model):
+    uid = models.TextField(max_length=500)
+    text = models.TextField(max_length=500)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)

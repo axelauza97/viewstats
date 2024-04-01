@@ -12,35 +12,25 @@ export const metadata = {
 
 export default function Layout({ children }) {
   return (
-    <main className="h-dvh overflow-hidden grid grid-rows-[min-content,1fr]">
-      <Banner />
-      <h1 className="font-bold text-xl sm:text-4xl mt-4 mx-auto text-center">
-        Welcome to the TODO page!
-      </h1>
-      <section
-        className="grid grid-rows-[min-content,1fr]
-        sm:grid-cols-2
-        sm:grid-rows-1
-        overflow-hidden
-        justify-items-center "
-      >
-        {children}
-      </section>
-    </main>
-  );
-}
-
-/*  return (
     <>
-      <Banner />
-      <section
-        className="min-h-[calc(90dvh)] grid sm:min-h-[calc(100dvh)] grid-rows-[min-content,1fr]
-         h-dvh overflow-hidden
-        justify-items-center "
-      >
-        {children}
-      </section>
+      <main className="grid h-dvh grid-rows-[min-content,1fr] overflow-hidden bg-slate-50">
+        <Banner />
+        <h1 className="mx-auto mt-4 text-center text-xl font-bold sm:text-4xl drop-shadow">
+          Welcome to the TODO page!
+        </h1>
+        <section
+          className="grid
+              grid-rows-[min-content,1fr]
+              justify-items-center
+              overflow-hidden sm:grid-cols-2 
+              sm:grid-rows-1
+              max-w-screen-2xl
+              mx-auto"
+              
+        >
+          {children}
+        </section>
+      </main>
     </>
   );
 }
-*/

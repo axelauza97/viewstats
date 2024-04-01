@@ -41,6 +41,12 @@ export const LoginForm = () => {
       document.cookie = `access=logged; Path=/; `;
       sessionStorage.setItem("access", userData.data.access);
       sessionStorage.setItem("refresh", userData.data.refresh);
+      console.log(userData);
+
+      localStorage.setItem("user_id", JSON.stringify(userData.data.pk));
+      localStorage.setItem("access", JSON.stringify(userData.data.access));
+      localStorage.setItem("refresh", JSON.stringify(userData.data.refresh));
+
       router.push("/dashboard");
     } catch (error) {
       setBanner({ message: error.message, status: "error", show: true });
@@ -83,7 +89,7 @@ export const LoginForm = () => {
           </button>
         </form>
         <button
-          className="rounded-md p-2 font-bold hover:scale-105 active:scale-95 w-fit mx-auto"
+          className="mx-auto w-fit rounded-md p-2 font-bold hover:scale-105 active:scale-95"
           onClick={() => setIsLogin((prev) => !prev)}
         >
           {isLogin ? "Sign Up!" : "Login"}
