@@ -1,7 +1,7 @@
 export const TodoAddForm = ({ addItemHandler }) => {
   return (
     <form
-      className="grid items-center gap-4 rounded border border-gray-500 bg-gray-50 p-4 text-lg shadow sm:grid-cols-[min-content,1fr] sm:text-xl"
+      className="grid items-center gap-4 rounded bg-white p-4 text-lg shadow sm:grid-cols-[min-content,1fr] sm:text-xl"
       aria-label="Add Elements"
       onSubmit={addItemHandler}
     >
