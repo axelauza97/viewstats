@@ -1,6 +1,6 @@
 export const fetchTodos = async ({ userId }) => {
   const response = await fetch(
-    "http://127.0.0.1:8000/api/todos/?user_id=" + userId,
+    "https://axelsell2.pythonanywhere.com/api/todos/?user_id=" + userId,
     {
       method: "GET",
     },
@@ -13,10 +13,13 @@ export const fetchTodos = async ({ userId }) => {
   return userData;
 };
 export const saveTodo = async (formData) => {
-  const response = await fetch("http://127.0.0.1:8000/api/todos/", {
-    method: "POST",
-    body: formData,
-  });
+  const response = await fetch(
+    "https://axelsell2.pythonanywhere.com/api/todos/",
+    {
+      method: "POST",
+      body: formData,
+    },
+  );
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.message);
@@ -26,9 +29,12 @@ export const saveTodo = async (formData) => {
 };
 
 export const deleteTodo = async ({ uid }) => {
-  const response = await fetch(`http://127.0.0.1:8000/api/todos/${uid}/`, {
-    method: "DELETE",
-  });
+  const response = await fetch(
+    `https://axelsell2.pythonanywhere.com/api/todos/${uid}/`,
+    {
+      method: "DELETE",
+    },
+  );
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.message);
@@ -38,10 +44,13 @@ export const deleteTodo = async ({ uid }) => {
 };
 
 export const editTodo = async ({ formData, id }) => {
-  const response = await fetch(`http://127.0.0.1:8000/api/todos/${id}/`, {
-    method: "PATCH",
-    body: formData,
-  });
+  const response = await fetch(
+    `https://axelsell2.pythonanywhere.com/api/todos/${id}/`,
+    {
+      method: "PATCH",
+      body: formData,
+    },
+  );
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.message);

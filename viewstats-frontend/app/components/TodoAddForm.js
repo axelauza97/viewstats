@@ -16,7 +16,7 @@ export const TodoAddForm = ({ addItemHandler }) => {
         name="todo"
         id="todo"
         placeholder="Add..."
-        className="w-full rounded border border-gray-400 p-2 font-semibold shadow drop-shadow"
+        className="w-full rounded p-2 font-semibold shadow drop-shadow"
       />
       <button
         id="submit"

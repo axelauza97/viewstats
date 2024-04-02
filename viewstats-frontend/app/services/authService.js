@@ -1,8 +1,11 @@
 export async function loginWithEmailAndPassword(formData) {
-  const response = await fetch("http://127.0.0.1:8000/api/login/", {
-    method: "POST",
-    body: formData,
-  });
+  const response = await fetch(
+    "https://axelsell2.pythonanywhere.com/api/login/",
+    {
+      method: "POST",
+      body: formData,
+    },
+  );
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.message);
@@ -11,10 +14,13 @@ export async function loginWithEmailAndPassword(formData) {
   return userData;
 }
 export async function createUserWithEmailAndPassword(formData) {
-  const response = await fetch("http://127.0.0.1:8000/api/user/create/", {
-    method: "POST",
-    body: formData,
-  });
+  const response = await fetch(
+    "https://axelsell2.pythonanywhere.com/api/user/create/",
+    {
+      method: "POST",
+      body: formData,
+    },
+  );
   if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.message);

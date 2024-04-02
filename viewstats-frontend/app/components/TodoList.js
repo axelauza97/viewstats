@@ -11,7 +11,7 @@ export const TodoList = ({ todos, deleteTodoHandler, editTodoHandler }) => {
       <ul>
         {todos &&
           todos.map((e) => (
-            <AnimatePresence mode="sync">
+            <AnimatePresence mode="sync" key={e.id}>
               <motion.li
                 exit={{ scale: 0.8, opacity: 0 }}
                 initial={{ opacity: 0, scale: 0.85, filter: "blur(0.25rem)" }}

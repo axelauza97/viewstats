@@ -19,7 +19,7 @@ export const EditPopUp = ({ todo, save }) => {
             id="todo"
             placeholder="Add..."
             defaultValue={todo.text}
-            className="w-full rounded border border-gray-400 p-2 shadow drop-shadow"
+            className="w-full rounded p-2 shadow drop-shadow"
           />
           <input
             type="text"

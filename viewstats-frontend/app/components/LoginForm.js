@@ -65,7 +65,7 @@ export const LoginForm = () => {
             User Name:
           </label>
           <input
-            className="px-2 py-1 font-semibold"
+            className="rounded px-2 py-1 font-semibold shadow"
             id="userName"
             type="text"
             required
@@ -75,7 +75,7 @@ export const LoginForm = () => {
             Password:
           </label>
           <input
-            className="px-2 py-1 font-semibold"
+            className="rounded px-2 py-1 font-semibold shadow"
             id="password"
             type="password"
             required
