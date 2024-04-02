@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: "ViewStats Test Axel Auza",
   description: "ViewStats todo administration",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }) {

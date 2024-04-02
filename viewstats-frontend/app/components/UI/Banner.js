@@ -14,7 +14,7 @@ export const Banner = () => {
   return (
     <>
       <aside
-        className={`fixed ${
+        className={`fixed z-50 ${
           banner.show ? "top-0" : "-top-20"
         } left-0 right-0 text-center transition-all`}
       >

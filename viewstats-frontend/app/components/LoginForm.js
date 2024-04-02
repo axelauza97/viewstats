@@ -56,7 +56,7 @@ export const LoginForm = () => {
   };
   return (
     <>
-      <section className="relative grid gap-4 rounded-xl bg-slate-100 p-6 ">
+      <section className="relative grid gap-4 rounded-xl bg-gray-50 p-6 ">
         {isLoading && <Loading />}
 
         <h1 className="pb-8 text-center text-2xl font-bold">ViewStats todo</h1>
@@ -82,14 +82,14 @@ export const LoginForm = () => {
             name="password"
           />
           <button
-            className="mt-2 rounded-md bg-slate-400 py-2 font-bold hover:scale-105 active:scale-95"
+            className="bg-red mt-2 rounded-md py-2 font-extrabold text-white hover:scale-105 active:scale-95"
             type="submit"
           >
             {isLogin ? "Login" : "Sign Up"}
           </button>
         </form>
         <button
-          className="mx-auto w-fit rounded-md p-2 font-bold hover:scale-105 active:scale-95"
+          className="mx-auto w-full rounded-md p-2 font-bold hover:scale-105 hover:bg-gray-100 active:scale-95"
           onClick={() => setIsLogin((prev) => !prev)}
         >
           {isLogin ? "Sign Up!" : "Login"}

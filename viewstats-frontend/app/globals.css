@@ -7,7 +7,12 @@
   --secondary: #f9fafb;
 }
 
+.bg-red {
+  background-color: red;
+}
+
 @layer utilities {
+
   /* Hide scrollbar for Chrome, Safari and Opera */
   .no-scrollbar::-webkit-scrollbar {
     display: none;

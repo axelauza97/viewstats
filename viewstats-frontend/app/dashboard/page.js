@@ -1,6 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
-import { Todo } from "../components/Todo";
+import { useContext, useEffect, useState } from "react";
 import { TodoAddForm } from "../components/TodoAddForm";
 import { EditPopUp } from "../components/EditPopUp";
 import {
@@ -9,14 +8,27 @@ import {
   fetchTodos,
   saveTodo,
 } from "../services/todoService";
+import { useRouter } from "next/navigation";
+import { BannerContext } from "../context/banner";
+import { TodoList } from "../components/TodoList";
 
 export default function Dashboard() {
   const [todos, setTodos] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+  const router = useRouter();
+  const { setBanner } = useContext(BannerContext);
 
   useEffect(() => {
+    const userId = localStorage.getItem("user_id");
+    if (userId === null) {
+      router.push("/");
+      setBanner({
+        message: "You need to login!",
+        status: 500,
+        show: true,
+      });
+    }
     (async () => {
-      const userId = localStorage.getItem("user_id");
       const res = await fetchTodos({ userId: userId });
       setTodos(res.data);
     })();
@@ -78,30 +90,15 @@ export default function Dashboard() {
         ""
       )}
 
-      <section className="mx-auto h-full max-w-full place-content-center  gap-4 p-8  sm:max-w-xl">
+      <section className="mx-auto h-full max-w-full place-content-center gap-4 p-8 sm:max-w-xl">
         <h3 className="text-lg font-bold drop-shadow">Add todo Form</h3>
         <TodoAddForm addItemHandler={addItemHandler} />
       </section>
-      <section
-        
-      >
-        <ul className={`p-8 my-2 max-h-full overflow-hidden no-scrollbar  ${todos.length > 0 ? "overflow-y-scroll" : ""}`} >
-          {todos &&
-            todos.map((e) => (
-              <Todo
-                key={e.id}
-                element={e}
-                deleteHandler={deleteTodoHandler}
-                editHandler={editTodoHandler}
-              />
-            ))}
-          {todos.length == 0 && (
-            <li className="p-8 m-2 w-40 rounded border border-solid border-gray-700 px-2 py-2 hover:cursor-pointer hover:border-gray-800">
-              No elements
-            </li>
-          )}
-        </ul>
-      </section>
+      <TodoList
+        todos={todos}
+        editTodoHandler={editTodoHandler}
+        deleteTodoHandler={deleteTodoHandler}
+      />
     </>
   );
 }

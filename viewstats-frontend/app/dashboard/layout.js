@@ -1,3 +1,4 @@
+import { LogoutButton } from "../components/LogoutButton";
 import { Banner } from "../components/UI/Banner";
 
 export const metadata = {
@@ -8,6 +9,9 @@ export const metadata = {
   description:
     "Example Ecommerce Web Page written with Next.js and Tailwind.css by Axel Auza A",
   keywords: "Axel Auza, Next.js, Tailwind, FrontEnd, FullStack",
+  icons: {
+    icon: "../favicon.ico",
+  },
 };
 
 export default function Layout({ children }) {
@@ -15,18 +19,19 @@ export default function Layout({ children }) {
     <>
       <main className="grid h-dvh grid-rows-[min-content,1fr] overflow-hidden bg-slate-50">
         <Banner />
-        <h1 className="mx-auto mt-4 text-center text-xl font-bold sm:text-4xl drop-shadow">
+        <LogoutButton />
+
+        <h1 className="mx-auto mt-4 text-center text-2xl font-bold drop-shadow sm:text-4xl">
           Welcome to the TODO page!
         </h1>
         <section
-          className="grid
-              grid-rows-[min-content,1fr]
-              justify-items-center
-              overflow-hidden sm:grid-cols-2 
-              sm:grid-rows-1
+          className="mx-auto
+              grid
               max-w-screen-2xl
-              mx-auto"
-              
+              grid-rows-[min-content,1fr] justify-items-center 
+              overflow-hidden
+              sm:grid-cols-2
+              sm:grid-rows-1"
         >
           {children}
         </section>
