@@ -3,7 +3,7 @@ export const EditPopUp = ({ todo, save }) => {
     <>
       <section className="fixed left-0 right-0 top-0 z-50 grid h-dvh w-full place-content-center backdrop-blur">
         <form
-          className=" relative grid max-h-44 max-w-80 items-center gap-4 rounded border border-gray-500 bg-gray-50 p-4  text-lg shadow sm:grid-cols-[min-content,1fr] sm:text-xl"
+          className=" relative grid max-h-44 max-w-80 items-center gap-4 rounded bg-gray-50 p-4  text-lg shadow sm:grid-cols-[min-content,1fr] sm:text-xl"
           aria-label="Add Elements"
           onSubmit={save}
         >

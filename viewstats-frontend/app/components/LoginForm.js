@@ -41,7 +41,6 @@ export const LoginForm = () => {
       document.cookie = `access=logged; Path=/; `;
       sessionStorage.setItem("access", userData.data.access);
       sessionStorage.setItem("refresh", userData.data.refresh);
-      console.log(userData);
 
       localStorage.setItem("user_id", JSON.stringify(userData.data.pk));
       localStorage.setItem("access", JSON.stringify(userData.data.access));

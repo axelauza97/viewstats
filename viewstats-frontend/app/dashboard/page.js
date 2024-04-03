@@ -91,8 +91,7 @@ export default function Dashboard() {
         ""
       )}
 
-      <section className="mx-auto h-full max-w-full place-content-center gap-4 p-8 sm:max-w-xl">
-        <h3 className="text-lg font-bold drop-shadow">Add todo Form</h3>
+      <section className="mx-auto h-full max-w-full place-content-center gap-4 p-8 py-2 sm:max-w-xl sm:py-8">
         <TodoAddForm addItemHandler={addItemHandler} />
       </section>
       <TodoList

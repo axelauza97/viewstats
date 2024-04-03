@@ -6,7 +6,6 @@ export function UserProvider({ children }) {
   const [user, setUser] = useState({});
   useEffect(() => {
     const storedUser = JSON.parse(sessionStorage.getItem("user"));
-    console.log(storedUser);
     setUser(storedUser);
   }, []);
 

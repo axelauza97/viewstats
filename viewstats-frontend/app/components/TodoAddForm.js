@@ -8,7 +8,7 @@ export const TodoAddForm = ({ addItemHandler }) => {
   };
   return (
     <form
-      className="grid items-center gap-4 rounded bg-white p-4 text-lg shadow sm:grid-cols-[min-content,1fr] sm:text-xl"
+      className="grid items-center gap-2 rounded bg-white p-2 px-4 text-lg shadow sm:grid-cols-[min-content,1fr] sm:gap-4 sm:p-4 sm:text-xl"
       aria-label="Add Elements"
       onSubmit={addItemHandler}
     >
@@ -34,7 +34,7 @@ export const TodoAddForm = ({ addItemHandler }) => {
       />
       <button
         id="submit"
-        className="bg-red col-start-2 ml-auto mr-0 rounded-md p-2 px-8 font-bold text-white shadow drop-shadow transition duration-75 ease-in-out hover:scale-105 focus:ring active:scale-90"
+        className="bg-red col-start-2 ml-auto mr-0 rounded-md px-8 py-1 font-bold text-white shadow drop-shadow transition duration-75 ease-in-out hover:scale-105 focus:ring active:scale-90 sm:p-2 sm:px-8"
       >
         Add
       </button>
