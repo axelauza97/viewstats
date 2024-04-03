@@ -26,11 +26,13 @@ export default function Layout({ children }) {
         <section
           className="mx-auto
               grid
-              max-w-screen-2xl
-              grid-rows-[min-content,1fr] justify-items-center 
+              w-full
+              max-w-screen-2xl grid-rows-[min-content,1fr] 
+              justify-items-stretch
               overflow-hidden
-              sm:grid-cols-2
-              sm:grid-rows-1"
+              lg:grid-cols-[1fr,2fr]
+              lg:grid-rows-1
+              "
         >
           {children}
         </section>

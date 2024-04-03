@@ -4,7 +4,7 @@ import { SvgWork } from "../svg/work";
 
 export const Todo = ({ element, editHandler, deleteHandler }) => {
   return (
-    <article className="relative my-2 grid grid-cols-2 grid-rows-2 items-center rounded bg-white px-2 py-2 shadow hover:scale-105 hover:cursor-pointer hover:border-gray-800 sm:m-2 sm:w-56">
+    <article className="relative my-2 grid grid-cols-2 grid-rows-2 items-center rounded bg-white px-2 py-2 shadow hover:scale-105 hover:cursor-pointer hover:border-gray-800 sm:m-2 sm:w-full">
       <p className="col-span-2 max-w-[90%] overflow-hidden truncate text-lg drop-shadow ">
         {element.text}
       </p>
