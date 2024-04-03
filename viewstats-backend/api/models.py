@@ -41,3 +41,4 @@ class Todo(models.Model):
     uid = models.TextField(max_length=500)
     text = models.TextField(max_length=500)
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    category = models.TextField(max_length=500, null=True)

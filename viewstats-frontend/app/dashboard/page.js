@@ -47,6 +47,7 @@ export default function Dashboard() {
       formData.append("uid", id);
       formData.append("text", fields.todo);
       formData.append("user", userId);
+      formData.append("category", fields.category);
       await saveTodo(formData);
       const res = await fetchTodos({ userId: userId });
       setTodos(res.data);

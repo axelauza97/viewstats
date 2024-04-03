@@ -7,7 +7,7 @@ export const Banner = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setBanner({ ...banner, show: false });
-    }, 5000);
+    }, 3000);
     return () => clearTimeout(timer);
   }, [banner]); // Empty dependency array ensures that this effect runs only once
 
